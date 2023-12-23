@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 
+// Load environment variables from .env file
+dotenv.config();
+const dotenv = require('dotenv');
+
 // MongoDB connection URI
-const mongoURL = 'mongodb://root:onedio@localhost:27017';
+const mongoDbURL = process.env.MONGODB_URL;
 
 // Create Mongoose connection
-mongoose.connect(mongoURL);
+mongoose.connect(mongoDbURL);
 
 // Check the database connection
 const db = mongoose.connection;
@@ -80,17 +84,7 @@ const FootballMatchSchema = new mongoose.Schema({
     PSCA: String,
 }, { collection: 'leagues' });
 
-// Function to insert data into MongoDB
-const insertDataToMongoDB = async (footballMatch) => {
-    try {
-        // Insert data into MongoDB
-        const FootballMatch = mongoose.model('FootballMatch', FootballMatchSchema);
-
-        // Insert multiple records into the MongoDB collection
-        FootballMatch.insertMany(footballMatch);
-    } catch (error) {
-        console.error('Error while inserting data to MongoDB:', error.message);
-    }
+module.exports = {
+    FootballMatchSchema,
+    db
 };
-
-module.exports = { insertDataToMongoDB, FootballMatchSchema };

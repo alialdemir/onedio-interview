@@ -12,27 +12,24 @@
     ],
     "license": "MIT",
     "scripts": {
-        "start": "nodemon",
-        "cli": "node ./CLI/csv.js",
-        "test": "mocha **/*.test.js"
+        "start": "node src/app.js",
+        "cli": "node ./src/CLI/csv.js",
+        "test": "mocha src/**/*.test.js"
     },
     "devDependencies": {
         "assert": "^2.1.0",
-        "babel-core": "^6.22.1",
-        "babel-polyfill": "^6.22.0",
-        "babel-preset-es2015": "^6.24.0",
-        "babel-preset-stage-3": "^6.22.0",
-        "babel-register": "^6.24.0",
         "chai": "^4.3.10",
         "mocha": "^10.2.0",
         "nodemon": "^1.11.0",
         "sinon": "^17.0.1"
     },
     "dependencies": {
-        "koa": "^2.2.0",
-        "koa-bodyparser": "^4.2.0",
+        "dotenv": "^16.3.1",
+        "koa": "^2.14.2",
+        "koa-bodyparser": "^4.4.1",
         "koa-logger": "^2.0.1",
-        "koa-router": "^7.1.1",
-        "mongoose": "^8.0.3"
+        "koa-router": "^12.0.1",
+        "mongoose": "^8.0.3",
+        "redis": "^4.6.12"
     }
 }

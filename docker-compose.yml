@@ -11,3 +11,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: onedio
     volumes:
       - ./data:/data/db
+
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"

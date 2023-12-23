@@ -1,7 +1,9 @@
 const { readCSV } = require('./csvReader');
-const { insertDataToMongoDB } = require('../database/mongoDBRepository');
-
+const { addLeagues } = require('../services/LeaguesService');
 const readline = require('readline');
+const { logError } = require('../utils');
+const url = require('url');
+
 // Function to get CSV URL from the user
 const askForCSVURL = () => {
     const rl = readline.createInterface({
@@ -18,10 +20,33 @@ const askForCSVURL = () => {
                 rejects();
                 process.exit(0);
             } else {
+                if (!isValidCSVURL(csvURL)) {
+                    return rejects();
+                }
+
                 resolve(csvURL);
             }
         });
     });
+};
+
+const isValidCSVURL = (csvURL) => {
+    try {
+        const parsedURL = new URL(csvURL);
+
+        // The protocol part of the URL should be 'http' or 'https'
+        if (parsedURL.protocol !== 'http:' && parsedURL.protocol !== 'https:') {
+            logError('Invalid protocol. CSV link should start with "http" or "https".');
+            return false;
+        } else if (!csvURL.endsWith('.csv')) {
+            return false;
+        }
+
+        return true;
+    } catch (error) {
+        logError('Invalid CSV URL format..');
+        return false;
+    }
 };
 
 // Main function to execute the application
@@ -33,12 +58,12 @@ const main = async () => {
 
             // Read CSV and convert to JSON
             const jsonData = await readCSV(csvURL);
-            console.log(jsonData)
+
             // Insert JSON data into MongoDB
-            await insertDataToMongoDB(jsonData);
+            await addLeagues(jsonData);
 
         } catch (error) {
-            console.error('An error occurred:', error?.message);
+            logError(error?.message || '');
         }
     }
 };

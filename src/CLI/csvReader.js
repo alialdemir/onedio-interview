@@ -1,5 +1,6 @@
 const axios = require('axios');
 const Papa = require('papaparse');
+const { logError } = require('../utils');
 
 // Module to read CSV file and convert it to JSON format
 const readCSV = (csvURL) => {
@@ -19,13 +20,13 @@ const readCSV = (csvURL) => {
                     return resolve(jsonData);
                 },
                 error: (error) => {
-                    console.error('Error: CSV format is not correct.');
-                    console.error('Error Details:', error.message);
+                    logError('Error: CSV format is not correct.');
+                    logError('Error Details:', error.message);
                     return reject([]);
                 },
             });
         } catch (error) {
-            console.error('An error occurred while fetching the CSV file:', error.message);
+            logError('An error occurred while fetching the CSV file:', error.message);
             return reject([]);
 
         }
@@ -34,9 +35,4 @@ const readCSV = (csvURL) => {
 };
 
 module.exports = { readCSV };
-
-// const logError = (message, data) => console.log('\u001b[' + 31 + 'm' + message + '\u001b[0m', data)
-
-
-
 
