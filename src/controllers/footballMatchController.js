@@ -7,16 +7,13 @@ const getFootballMatches = async (ctx) => {
 
   const division = ctx.query.Division || 'All';
 
-  const startYear = new Date(ctx.query.startYear);
-  const endYear = new Date(ctx.query.endYear);
+  const startYear = ctx.query.startYear || 2018
+  const endYear = ctx.query.endYear || 2019
 
   const footballMatches = await getFootballMatchByPaging(page, limit, startYear, endYear, division)
 
-  ctx.body = {
-    page,
-    limit,
-    ...footballMatches
-  }
+  ctx.body = footballMatches
+
 }
 
 module.exports = {
