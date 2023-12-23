@@ -1,0 +1,35 @@
+data
+# Node.js
+node_modules/
+
+# Koa.js
+/dist
+
+# VS Code
+.vscode/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Yarn
+yarn-error.log
+.pnp.*
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*-lock.json
+yarn.lock
+1819-E0.csv
