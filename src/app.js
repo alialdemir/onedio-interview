@@ -1,24 +1,18 @@
 // app.js
 
 const Koa = require('koa');
-const Router = require('koa-router');
-const dotenv = require('dotenv');
 const bodyParserMiddleware = require('./middlewares/bodyParserMiddleware');
-const leaguesController = require('./controllers/leaguesController');
+const router = require('./router');
 
 // Load environment variables from .env file
+const dotenv = require('dotenv');
 dotenv.config();
 
 // Create a new Koa application
 const app = new Koa();
-const router = new Router();
-
 
 // Use the bodyParser middleware to parse request bodies
 app.use(bodyParserMiddleware);
-
-// Define Koa routes
-router.get('/leagues', leaguesController.getLeagues);
 
 // Add routes to the Koa application
 app.use(router.routes());
