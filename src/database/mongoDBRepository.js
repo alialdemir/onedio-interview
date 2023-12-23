@@ -82,9 +82,12 @@ const FootballMatchSchema = new mongoose.Schema({
     PSCH: String,
     PSCD: String,
     PSCA: String,
-}, { collection: 'leagues' });
+}, { collection: 'footballMatch' });
+
+// const FootballMatch = mongoose.model('FootballMatch', FootballMatchSchema);
 
 module.exports = {
     FootballMatchSchema,
+    // FootballMatch,
     db
 };

@@ -1,5 +1,5 @@
 const { readCSV } = require('./csvReader');
-const { addLeagues } = require('../services/LeaguesService');
+const { addFootballMatch } = require('../services/footballMatchService');
 const readline = require('readline');
 const { logError } = require('../utils');
 const url = require('url');
@@ -60,7 +60,7 @@ const main = async () => {
             const jsonData = await readCSV(csvURL);
 
             // Insert JSON data into MongoDB
-            await addLeagues(jsonData);
+            await addFootballMatch(jsonData);
 
         } catch (error) {
             logError(error?.message || '');

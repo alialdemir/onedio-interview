@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  version: 0.1.0
+  title: Preference public API
+  description: Preference public API
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+paths:
+  /footballMatches:
+    get:
+      description: Get football matches list
+      summary: Get football matches list
+      tags:
+        - movie
+      operationId: FootballMatchesGet
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: string
+          description: Offset in result array for pagination
+        - in: query
+          name: limit
+          schema:
+            type: string
+          description: Limit amount of items in result array for pagination
+      responses:
+        "200":
+          description: Football matches list
+          content:
+            application/json:
+              schema:
+                $ref: "#/src/database/schemas/FootballMatchSchema"
+
+servers:
+  - url: http://localhost:3001/
+components:
+  schemas:
+    FootballMatchResponse:
+      title: FootballMatchResponse
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/src/database/schemas/FootballMatchSchema"
+        page:
+          type: number
+        limit:
+          type: number
+
+    BadRequestError:
+      title: Bad Request Error
+      type: object
+      properties:
+        messages:
+          type: array
+          description: List of error messages
+          items:
+            type: string
+          example: ['"runtime" must be an integer']

@@ -7,8 +7,9 @@ const logError = (message, data) => console.log('\u001b[' + 31 + 'm' + message +
 
 const logSuccess = (message, data) => console.log('\u001b[' + 32 + 'm' + message + '\u001b[0m', data || '')
 
+
 module.exports = {
     delay,
     logError,
-    logSuccess
+    logSuccess,
 };
