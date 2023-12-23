@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
-  version: 0.1.0
-  title: Preference public API
-  description: Preference public API
+  version: 1.0.0
+  title: Paginated Football Matches API
+  description: Paginated Football Matches API
   license:
     name: MIT
     url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
@@ -15,40 +15,94 @@ paths:
         - movie
       operationId: FootballMatchesGet
       parameters:
+        - name: startYear
+          in: query
+          description: The start year for filtering matches
+          required: true
+          schema:
+            type: string
+            format: year
+          default: 2018
+        - name: endYear
+          in: query
+          description: The end year for filtering matches
+          required: true
+          schema:
+            type: string
+            format: year
+          default: 2019
         - in: query
           name: page
           schema:
             type: string
+          default: 1
           description: Offset in result array for pagination
         - in: query
           name: limit
           schema:
             type: string
+          default: 15
           description: Limit amount of items in result array for pagination
+        - in: query
+          name: Division
+          schema:
+            type: string
+            enum:
+              - All
+              - Bundesliga
+              - Premier League
+          default: All
+          description: Football division
       responses:
         "200":
-          description: Football matches list
+          description: Successful response
           content:
             application/json:
               schema:
-                $ref: "#/src/database/schemas/FootballMatchSchema"
+                type: array
+                items:
+                  $ref: "#/components/schemas/PaginatedResponse"
 
 servers:
   - url: http://localhost:3001/
 components:
   schemas:
-    FootballMatchResponse:
-      title: FootballMatchResponse
+    PaginatedResponse:
       type: object
       properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        totalCount:
+          type: integer
         data:
           type: array
           items:
-            $ref: "#/src/database/schemas/FootballMatchSchema"
-        page:
-          type: number
-        limit:
-          type: number
+            $ref: "#/components/schemas/FootballMatch"
+    FootballMatch:
+      type: object
+      properties:
+        Date:
+          type: string
+          format: date
+        HomeTeam:
+          type: string
+        AwayTeam:
+          type: string
+        FTHG:
+          type: integer
+        FTAG:
+          type: integer
+        Referee:
+          type: string
+      required:
+        - Date
+        - HomeTeam
+        - AwayTeam
+        - FTHG
+        - FTAG
+        - Referee
 
     BadRequestError:
       title: Bad Request Error
