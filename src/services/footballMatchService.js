@@ -70,54 +70,6 @@ const buildQuery = (startDate, endDate, division) => {
 
     return query;
 };
-// const getFootballMatchByPaging = async (page, limit, startYear, endYear, division) => {
-//     division = leagues[division]
-//     if (typeof division === 'undefined') {
-//         return {
-//             message: 'Invalid division field'
-//         }
-//     }
-
-//     const cacheKey = `footballMatch:${page}:${limit}:${startYear}:${endYear}:${division}`;
-//     const cachedData = await getFromCache(cacheKey);
-//     if (cachedData) {
-//         return cachedData
-//     }
-
-//     const startDate = new Date(startYear);
-//     const endDate = new Date(endYear);
-
-//     const query = {
-//         Date: {
-//             $gte: startDate,
-//             $lte: endDate,
-//         },
-//     }
-
-//     if (division !== 'All') {
-//         query.Div = division
-//     }
-
-//     const FootballMatch = mongoose.model('FootballMatch', FootballMatchSchema);
-//     const footballMatches = await FootballMatch
-//         .find(query)
-//         .select('-_id Date HomeTeam AwayTeam FTHG FTAG Referee')
-//         .skip((page - 1) * limit)
-//         .limit(limit)
-//         .exec()
-
-//     const totalDocuments = await FootballMatch.countDocuments(query);
-//     const result = {
-//         page,
-//         limit,
-//         totalCount: totalDocuments,
-//         data: footballMatches,
-//     };
-
-//     await setToCache(cacheKey, JSON.stringify(result));
-
-//     return result
-// }
 
 const addFootballMatch = (matches) => {
     try {

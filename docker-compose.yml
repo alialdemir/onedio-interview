@@ -1,6 +1,24 @@
 version: "3.1"
 
 services:
+  onedio-app:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: dev
+      PORT: 3000
+      MONGODB_URL: mongodb://root:onedio@mongodb:27017
+      REDIS_URL: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - onedio-network
+
   mongodb:
     image: mongo:latest
     container_name: mongodb
@@ -11,8 +29,16 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: onedio
     volumes:
       - ./data:/data/db
+    networks:
+      - onedio-network
 
   redis:
     image: "redis:latest"
     ports:
       - "6379:6379"
+    networks:
+      - onedio-network
+
+networks:
+  onedio-network:
+    driver: bridge
