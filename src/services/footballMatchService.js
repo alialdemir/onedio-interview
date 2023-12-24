@@ -23,8 +23,8 @@ const getFootballMatchByPaging = async (page, limit, startYear, endYear, divisio
 
     if (cachedData) {
         return cachedData;
-    }
 
+    }
     const startDate = new Date(startYear);
     const endDate = new Date(endYear);
 
