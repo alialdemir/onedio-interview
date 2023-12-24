@@ -12,7 +12,7 @@ describe('getFootballMatches', () => {
         const getFootballMatchByPagingStub = sinon.stub(footballMatchService, 'getFootballMatchByPaging').resolves([]);
 
         await getFootballMatches(ctx);
-        console.log('---------', getFootballMatchByPagingStub.calledOnceWithExactly(1, 15, 2018, 2019, 'All'))
+
         expect(getFootballMatchByPagingStub.calledOnceWithExactly(1, 15, 2018, 2019, 'All')).to.be.false;
 
         getFootballMatchByPagingStub.restore();
@@ -53,7 +53,7 @@ describe('getFootballMatches', () => {
         sinon.stub(footballMatchService, 'getFootballMatchByPaging').resolves(fakeFootballMatches);
 
         await getFootballMatches(ctx);
-        console.log('-------', expect(ctx.body).to.deep)
+
         expect(ctx.body).to.deep.equal(fakeFootballMatches);
     });
 });
