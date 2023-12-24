@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const mongoose = require('mongoose');
-const FootballMatchSchema = require('../database/schemas/footballMatchSchema');
+const FootballMatchSchema = require('../../database/schemas/footballMatchSchema');
 
 describe('FootballMatchSchema', () => {
     it('should create a valid FootballMatch document', async () => {

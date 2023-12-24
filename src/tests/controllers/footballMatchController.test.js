@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-const { getFootballMatches } = require('../controllers/footballMatchController');
-const footballMatchService = require('../services/footballMatchService');
+const { getFootballMatches } = require('../../controllers/footballMatchController');
+const footballMatchService = require('../../services/footballMatchService');
 
 describe('getFootballMatches', () => {
     it('should call getFootballMatchByPaging with default values if no query parameters are provided', async () => {

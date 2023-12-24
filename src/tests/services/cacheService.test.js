@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { getFromCache, setToCache } = require('../services/cacheService');
+const { getFromCache, setToCache } = require('../../services/cacheService');
 
 // Test suite for Redis cache functions
 describe('Redis Cache Functions', () => {

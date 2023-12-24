@@ -1,5 +1,5 @@
-const delay = (delayInms) => {
-    return new Promise(resolve => setTimeout(resolve, delayInms));
+const delay = (delay) => {
+    return new Promise(resolve => setTimeout(resolve, delay));
 };
 
 const logError = (message, data) => console.log('\u001b[' + 31 + 'm' + message + '\u001b[0m', data || '')

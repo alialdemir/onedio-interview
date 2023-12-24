@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 const mongoose = require('mongoose');
-const { getFootballMatchByPaging, addFootballMatch, buildCacheKey, buildQuery, formatMatchDate } = require('../services/footballMatchService');
+const { getFootballMatchByPaging, addFootballMatch, buildCacheKey, buildQuery, formatMatchDate } = require('../../services/footballMatchService');
 
 describe('Football Match Service', () => {
     describe('getFootballMatchByPaging', () => {

@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const mongoose = require('mongoose');
-const { db } = require('../database/mongoDBRepository');
+const { db } = require('../../database/mongoDBRepository');
 
 describe('MongoDB Connection', () => {
     it('should connect to MongoDB successfully', (done) => {
