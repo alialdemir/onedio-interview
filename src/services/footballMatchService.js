@@ -110,5 +110,8 @@ const formatMatchDate = (match) => {
 
 module.exports = {
     getFootballMatchByPaging,
-    addFootballMatch
+    addFootballMatch,
+    buildCacheKey,
+    buildQuery,
+    formatMatchDate
 };
