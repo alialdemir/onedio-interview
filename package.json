@@ -14,7 +14,7 @@
     "scripts": {
         "start": "nodemon src/app.js",
         "cli": "node ./src/CLI/csv.js",
-        "test": "mocha src/**/**/*.test.js"
+        "test": "mocha src/**/**/*.test.js --exit"
     },
     "devDependencies": {
         "assert": "^2.1.0",
