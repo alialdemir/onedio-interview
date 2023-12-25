@@ -51,21 +51,21 @@ const isValidCSVURL = (csvURL) => {
 
 // Main function to execute the application
 const main = async () => {
-    // while (true) {
-    try {
-        // Get CSV URL from the user
-        const csvURL = await askForCSVURL();
+    while (true) {
+        try {
+            // Get CSV URL from the user
+            const csvURL = await askForCSVURL();
 
-        // Read CSV and convert to JSON
-        const jsonData = await readCSV(csvURL);
+            // Read CSV and convert to JSON
+            const jsonData = await readCSV(csvURL);
 
-        // Insert JSON data into MongoDB
-        await addFootballMatch(jsonData);
+            // Insert JSON data into MongoDB
+            await addFootballMatch(jsonData);
 
-    } catch (error) {
-        logError(error?.message || '');
+        } catch (error) {
+            logError(error?.message || '');
+        }
     }
-    // }
 };
 
 // Start the application
