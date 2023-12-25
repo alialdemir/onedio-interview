@@ -64,7 +64,7 @@ paths:
                   $ref: "#/components/schemas/PaginatedResponse"
 
 servers:
-  - url: http://localhost:3001/
+  - url: http://localhost:3000/
 components:
   schemas:
     PaginatedResponse:

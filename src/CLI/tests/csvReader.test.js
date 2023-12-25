@@ -20,7 +20,7 @@ describe('readCSV function', () => {
     });
 
     it('should handle errors and return an empty array on failure', async () => {
-        const csvURL = 'http://example.com/nonexistent.csv';
+        const csvURL = 'https://static.onedio.com/nonexistent.csv';
         axios.get = async () => {
             throw new Error('Failed to fetch CSV');
         };
