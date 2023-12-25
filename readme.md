@@ -27,7 +27,7 @@ Initiate the project by following the steps below.
    npm start
    ```
 
-The application will run by default at `http://localhost:3000`.
+The application will run by default at `http://localhost:3000/swagger`.
 
 ### CLI Usage
 
