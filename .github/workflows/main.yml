@@ -21,5 +21,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Change Directory to CLI
+        run: cd CLI
+
+      - name: Install Dependencies CLI
+        run: npm install
+
       - name: Run Tests
         run: npm test
