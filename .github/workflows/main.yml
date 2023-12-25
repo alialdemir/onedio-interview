@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Change Directory to CLI
-        run: cd CLI
+        run: cd src/CLI
 
       - name: Install Dependencies CLI
         run: npm install
